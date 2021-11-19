@@ -49,7 +49,7 @@ dependencies {
 
     implementation 'com.etebarian:meow-bottom-navigation-java:1.2.0'
 
-   /* // Lottie dependency
+    // Lottie dependency
     def lottieVersion = "3.4.0"
     implementation "com.airbnb.android:lottie:$lottieVersion"
 
@@ -66,7 +66,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:$arch_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$arch_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$arch_version"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$arch_version"*/
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$arch_version"
 
 
 }
