@@ -23,6 +23,12 @@ class EncryptedActivity : AppCompatActivity() {
         } else if (extras?.containsKey("decrypted") == true) {
             val decrypted = extras.getString("decrypted")
             tvEncryptedData.text = decrypted
+        } else if (extras?.containsKey("RailFenceEncrypted") == true) {
+            val RailFenceEncrypted = extras.getString("RailFenceEncrypted")
+            tvEncryptedData.text = RailFenceEncrypted
+        } else if (extras?.containsKey("RailFenceDecrypted") == true) {
+            val RailFenceDecrypted = extras.getString("RailFenceDecrypted")
+            tvEncryptedData.text = RailFenceDecrypted
         }
 
         btnCopyED.setOnClickListener {

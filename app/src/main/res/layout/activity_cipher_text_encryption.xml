@@ -7,12 +7,22 @@
     android:orientation="vertical"
     tools:context=".Views.CipherTextEncryption">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:fontFamily="@font/concert_one"
+        android:gravity="center"
+        android:text="Ciphertext Encryption Technique"
+        android:textColor="@color/darkPrimary"
+        android:textSize="35sp" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text"
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:layout_margin="@dimen/dp_10"
         android:hint="Enter text here"
         app:boxBackgroundColor="#20D81B60"
@@ -33,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/text"
         android:layout_margin="@dimen/dp_10"
-        android:hint="Enter text here"
+        android:hint="Enter key level"
         app:boxBackgroundColor="#20D81B60"
         app:boxCornerRadiusTopEnd="@dimen/dp_10"
         app:boxCornerRadiusTopStart="@dimen/dp_10">

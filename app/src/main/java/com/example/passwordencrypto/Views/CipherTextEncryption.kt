@@ -13,7 +13,6 @@ class CipherTextEncryption : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cipher_text_encryption)
-
         btnEncryptData.setOnClickListener {
             val str: String = etEncryptData.text.toString()
             val key : Int = etEncryptKey.text.toString().toInt()

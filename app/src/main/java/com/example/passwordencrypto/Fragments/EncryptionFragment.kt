@@ -6,7 +6,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.passwordencrypto.R
 import com.example.passwordencrypto.Views.CipherTextEncryption
-import com.example.passwordencrypto.Views.RailFenceActivity
+import com.example.passwordencrypto.Views.RailFenceEncryption
 import kotlinx.android.synthetic.main.encryption_password.*
 
 class EncryptionFragment : Fragment(R.layout.encryption_password) {
@@ -20,7 +20,7 @@ class EncryptionFragment : Fragment(R.layout.encryption_password) {
         }
 
         btnRailFence.setOnClickListener {
-            val intent = Intent(context, RailFenceActivity::class.java)
+            val intent = Intent(context, RailFenceEncryption::class.java)
             startActivity(intent)
         }
     }

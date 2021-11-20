@@ -14,7 +14,7 @@
             android:name=".Views.DecryptionActivity"
             android:exported="true" />
         <activity
-            android:name=".Views.RailFenceActivity"
+            android:name=".Views.RailFenceEncryption"
             android:exported="true" />
         <activity
             android:name=".Views.CipherTextEncryption"

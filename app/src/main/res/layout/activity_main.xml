@@ -8,17 +8,20 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="350dp"
+        android:layout_marginStart="@dimen/dp_20"
         android:layout_marginTop="100dp"
+        android:layout_marginEnd="@dimen/dp_20"
         android:src="@drawable/csecurity" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="@dimen/dp_20"
         android:layout_marginEnd="@dimen/dp_20"
-        android:fontFamily="@font/poppins_light"
-        android:text="We’re all going to have to change how we think about data protection. \n -Elizabeth Denham"
+        android:fontFamily="@font/arsenal"
+        android:text="We’re all going to have to change how we think about data protection. \n-Elizabeth Denham"
         android:textSize="15sp" />
 
     <Button
