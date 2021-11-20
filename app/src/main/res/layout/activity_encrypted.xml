@@ -10,7 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/layoutBtn"
-        android:layout_margin="@dimen/dp_10"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:layout_marginBottom="@dimen/dp_10"
         android:background="@drawable/dashes"
         android:drawableTop="@drawable/ic_baseline_content_copy_24"
         android:fontFamily="@font/poppins_medium"
@@ -31,7 +34,7 @@
         android:weightSum="3">
 
         <Button
-            android:id="@+id/btnSaveEn"
+            android:id="@+id/btnCopyED"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -47,7 +50,7 @@
             android:layout_height="match_parent" />
 
         <Button
-            android:id="@+id/btnHomeEn"
+            android:id="@+id/btnHomeED"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -63,7 +66,7 @@
             android:layout_height="match_parent" />
 
         <Button
-            android:id="@+id/btnCopyEn"
+            android:id="@+id/btnSaveED"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

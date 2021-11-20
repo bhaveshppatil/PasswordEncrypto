@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".Views.CipherTextEncryption">
+    tools:context=".Views.DecryptionActivity">
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -14,13 +13,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dp_10"
-        android:hint="Enter text here"
+        android:hint="Enter encrypted here"
         app:boxBackgroundColor="#20D81B60"
         app:boxCornerRadiusTopEnd="@dimen/dp_10"
         app:boxCornerRadiusTopStart="@dimen/dp_10">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etEncryptData"
+            android:id="@+id/etDecryptData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -33,21 +32,22 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/text"
         android:layout_margin="@dimen/dp_10"
-        android:hint="Enter text here"
+        android:hint="Enter key level"
         app:boxBackgroundColor="#20D81B60"
         app:boxCornerRadiusTopEnd="@dimen/dp_10"
         app:boxCornerRadiusTopStart="@dimen/dp_10">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etEncryptKey"
+            android:id="@+id/etDecryptKey"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
+
     <Button
-        android:id="@+id/btnEncryptData"
+        android:id="@+id/btnDecryptData"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_below="@id/text1"
@@ -56,10 +56,9 @@
         android:layout_marginEnd="50dp"
         android:background="@drawable/corners_bg"
         android:fontFamily="@font/poppins_medium"
-        android:text="Encrypt Data"
+        android:text="Decrypt Data"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="20sp" />
-
 
 </RelativeLayout>

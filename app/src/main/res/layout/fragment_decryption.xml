@@ -1,9 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragments.DecryptionFragment">
 
+    <TextView
+        android:id="@+id/tvEnTech"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:fontFamily="@font/concert_one"
+        android:gravity="center"
+        android:text="Select Encryption Technique"
+        android:textColor="@color/black"
+        android:textSize="35sp" />
 
-</FrameLayout>
+    <Button
+        android:id="@+id/btnDecryption"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        android:layout_below="@id/tvEnTech"
+        android:layout_marginStart="@dimen/dp_30"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="@dimen/dp_30"
+        android:layout_weight="1"
+        android:background="@drawable/corners_bg"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Decrypt Data"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+</RelativeLayout>

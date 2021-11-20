@@ -145,10 +145,6 @@ class PasswordFragment : Fragment(R.layout.fragment_password) {
             Toast.makeText(context, "Password saved successfully", Toast.LENGTH_SHORT).show();
         }
 
-        if (!(checkboxSymbols.isChecked && checkboxNumbers.isChecked && checkboxLowercase.isChecked && checkboxUppercase.isChecked)) {
-            Toast.makeText(context, "Please select char combinations", Toast.LENGTH_SHORT).show();
-        }
-
         for (i in sb.length until progress) {
             sb.append(allowedChars[rn.nextInt(allowedChars.length)])
         }

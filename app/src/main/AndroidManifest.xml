@@ -11,6 +11,9 @@
         android:textIsSelectable="true"
         android:theme="@style/Theme.PasswordEncrypto">
         <activity
+            android:name=".Views.DecryptionActivity"
+            android:exported="true" />
+        <activity
             android:name=".Views.RailFenceActivity"
             android:exported="true" />
         <activity

@@ -10,30 +10,14 @@ import kotlinx.android.synthetic.main.fragment_password.*
 
 class CipherTextEncryption : AppCompatActivity() {
 
-    private var progres: Int = 1
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cipher_text_encryption)
 
-        val seekBar = findViewById<SeekBar>(R.id.seekbarLevel)
-
-        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-
-            override fun onProgressChanged(seekBar: SeekBar, progresValue: Int, fromUser: Boolean) {
-                progres = progresValue
-                tvSeekMax.text = "${progres.toString()}"
-            }
-            override fun onStartTrackingTouch(seekBar: SeekBar) {}
-
-            override fun onStopTrackingTouch(seekBar: SeekBar) {
-
-            }
-        })
-
         btnEncryptData.setOnClickListener {
             val str: String = etEncryptData.text.toString()
-            val data = encryptData(str, progres)
+            val key : Int = etEncryptKey.text.toString().toInt()
+            val data = encryptData(str, key)
             val intent = Intent(this, EncryptedActivity::class.java)
             intent.putExtra("encrypted", data)
             startActivity(intent)
@@ -51,7 +35,6 @@ class CipherTextEncryption : AppCompatActivity() {
                 val upper = ((str[i].hashCode() + key - 65) % 26 + 65).toChar()
                 encryptedStr += upper
             } else if (str[i] in '0'..'9') {
-                val pos: Int = Char(str[i].toInt()).toInt()
                 val number = ((str[i].hashCode() + key - 48) % 10 + 48).toChar()
                 encryptedStr += number
             } else {
