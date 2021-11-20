@@ -48,6 +48,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     implementation 'com.etebarian:meow-bottom-navigation-java:1.2.0'
+    implementation 'com.github.clans:fab:1.6.4'
 
     // Lottie dependency
     def lottieVersion = "3.4.0"

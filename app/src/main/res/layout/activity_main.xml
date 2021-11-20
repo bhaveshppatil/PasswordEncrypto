@@ -32,7 +32,7 @@
         android:fontFamily="@font/poppins_medium"
         android:text="Let's go!"
         android:textAllCaps="false"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="20sp" />
 
 </LinearLayout>
