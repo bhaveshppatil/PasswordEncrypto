@@ -27,7 +27,7 @@ class DecryptionActivity : AppCompatActivity() {
             if (cipher.id == radioButton) {
                 Toast.makeText(
                     this,
-                    "Cipher Encryption Selected",
+                    "Cipher encryption selected",
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -37,7 +37,7 @@ class DecryptionActivity : AppCompatActivity() {
                 etDecryptKey.isClickable = false
                 Toast.makeText(
                     this,
-                    "Rail Fence Encryption Selected",
+                    "Rail Fence encryption selected",
                     Toast.LENGTH_SHORT
                 ).show()
             }

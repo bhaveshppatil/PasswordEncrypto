@@ -1,24 +1,19 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <item
-        android:id="@+id/save"
-        android:icon="@drawable/ic_baseline_save_24"
-        android:title="@string/savelist"
-        android:contentDescription="@string/content_description_save"
-        app:showAsAction="ifRoom" />
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/copy"
         android:icon="@drawable/ic_baseline_content_copy_24"
-        android:title="@string/copy"
-        android:contentDescription="@string/content_description_delete"
-        app:showAsAction="ifRoom" />
+        android:title="Copy" />
+
+    <item
+        android:id="@+id/save"
+        android:icon="@drawable/ic_baseline_save_24"
+        android:title="Save" />
 
     <item
         android:id="@+id/more"
-        android:title="@string/more"
-        android:contentDescription="@string/content_description_more"
-        app:showAsAction="never" />
+        android:icon="@drawable/ic_baseline_format_list_bulleted_24"
+        android:title="More" />
 
 </menu>

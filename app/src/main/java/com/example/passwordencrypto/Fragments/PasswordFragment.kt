@@ -4,10 +4,8 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.os.Bundle
 import android.view.View
-import android.widget.CheckBox
-import android.widget.SeekBar
+import android.widget.*
 import android.widget.SeekBar.OnSeekBarChangeListener
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.passwordencrypto.R
 import com.github.clans.fab.FloatingActionButton
@@ -28,6 +26,7 @@ class PasswordFragment : Fragment(R.layout.fragment_password) {
     private lateinit var fabCopy: FloatingActionButton
 
     private var progress: Int = 1
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -38,13 +37,32 @@ class PasswordFragment : Fragment(R.layout.fragment_password) {
         checkboxLowercase = view.findViewById(R.id.checkboxLowercase)
         checkboxNumbers = view.findViewById(R.id.checkboxNumbers)
         checkboxSavePasswd = view.findViewById(R.id.checkboxSavePasswd)
+        val menuBar: TextView = view.findViewById(R.id.tvMenu)
 
-        fabCopy = view.findViewById(R.id.fabCopy)
-        fabSavedList = view.findViewById(R.id.fabSavedList)
-        fabCopy = view.findViewById(R.id.fabCopy)
-        fam = view.findViewById(R.id.fab_menu)
+        menuBar.setOnClickListener {
+            val popupMenu = PopupMenu(context, menuBar)
+            popupMenu.inflate(R.menu.top_menu_bar)
 
-
+            popupMenu.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.copy -> {
+                        val manager: ClipboardManager =
+                            requireContext().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                        manager.setText(tvGeneratedPasswd.text)
+                        Toast.makeText(context, "Copied", Toast.LENGTH_SHORT).show()
+                    }
+                    R.id.save -> {
+                        Toast.makeText(context, "Data Saved Successfully", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                    R.id.more -> {
+                        Toast.makeText(context, "will update soon", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                false
+            })
+            popupMenu.show()
+        }
         var currentValue = seekBar.progress
 
         seekBar.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
@@ -72,48 +90,7 @@ class PasswordFragment : Fragment(R.layout.fragment_password) {
         btnGenerate.setOnClickListener {
             tvGeneratedPasswd.text = generateRandomPassword()
         }
-
-        fam.setOnMenuToggleListener { opened ->
-            if (opened) {
-                btnGenerate.visibility = View.GONE
-            } else {
-                btnGenerate.visibility = View.VISIBLE
-            }
-        }
-
-        fabCopy.setOnClickListener(onButtonClick());
-        fabSavedList.setOnClickListener(onButtonClick());
-
-        fam.setOnClickListener {
-            if (fam.isOpened) {
-                fam.close(true)
-            }
-        }
     }
-
-    private fun showToast(s: String) {
-
-        Toast.makeText(context, s, Toast.LENGTH_SHORT).show()
-
-    }
-
-    private fun onButtonClick(): View.OnClickListener? {
-        return View.OnClickListener { view ->
-            if (view === fabCopy) {
-                tvGeneratedPasswd.setOnClickListener(View.OnClickListener {
-                    val manager: ClipboardManager =
-                        requireContext().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-                    manager.setText(tvGeneratedPasswd.text)
-                    Toast.makeText(context, "Copied", Toast.LENGTH_SHORT).show()
-                })
-
-            } else if (view === fabSavedList) {
-                showToast("Button Delete clicked")
-            }
-            fam.close(true)
-        }
-    }
-
 
     private fun generateRandomPassword(): String {
         val upperCaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
