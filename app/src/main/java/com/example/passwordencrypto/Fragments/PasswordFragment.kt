@@ -21,9 +21,6 @@ class PasswordFragment : Fragment(R.layout.fragment_password) {
     private lateinit var checkboxLowercase: CheckBox
     private lateinit var checkboxNumbers: CheckBox
     private lateinit var checkboxSavePasswd: CheckBox
-    private lateinit var fam: FloatingActionMenu
-    private lateinit var fabSavedList: FloatingActionButton
-    private lateinit var fabCopy: FloatingActionButton
 
     private var progress: Int = 1
 
@@ -43,7 +40,7 @@ class PasswordFragment : Fragment(R.layout.fragment_password) {
             val popupMenu = PopupMenu(context, menuBar)
             popupMenu.inflate(R.menu.top_menu_bar)
 
-            popupMenu.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item ->
+            popupMenu.setOnMenuItemClickListener { item ->
                 when (item.itemId) {
                     R.id.copy -> {
                         val manager: ClipboardManager =
@@ -60,16 +57,15 @@ class PasswordFragment : Fragment(R.layout.fragment_password) {
                     }
                 }
                 false
-            })
+            }
             popupMenu.show()
         }
-        var currentValue = seekBar.progress
 
         seekBar.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
 
             override fun onProgressChanged(seekBar: SeekBar, progresValue: Int, fromUser: Boolean) {
                 progress = progresValue
-                tvSeekMax.text = "${progress.toString()}"
+                tvSeekMax.text = progress.toString()
 
             }
 
@@ -80,12 +76,12 @@ class PasswordFragment : Fragment(R.layout.fragment_password) {
             }
         })
 
-        tvGeneratedPasswd.setOnClickListener(View.OnClickListener {
+        tvGeneratedPasswd.setOnClickListener {
             val manager: ClipboardManager =
                 requireContext().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
             manager.setText(tvGeneratedPasswd.text)
             Toast.makeText(context, "Copied", Toast.LENGTH_SHORT).show()
-        })
+        }
 
         btnGenerate.setOnClickListener {
             tvGeneratedPasswd.text = generateRandomPassword()
@@ -119,7 +115,7 @@ class PasswordFragment : Fragment(R.layout.fragment_password) {
         }
 
         if (checkboxSavePasswd.isChecked) {
-            Toast.makeText(context, "Password saved successfully", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Password saved successfully", Toast.LENGTH_SHORT).show()
         }
 
         for (i in sb.length until progress) {
