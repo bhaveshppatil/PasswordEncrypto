@@ -1,7 +1,9 @@
 # PasswordEncrypto: Encryption & Decryption
-*PasswordEncryptor is an app to generate strong passwords and encrypt and decrypt data🔐*
+*PasswordEncrypto is an app to generate strong passwords and encrypt and decrypt data🔐*
 
-#### Kotlin. 
+#### Kotlin.
+
+👉 **PasswordEncrypto [Live Demo](https://drive.google.com/file/d/1qAlpMrBvLy5wscenA6TwTRiVgF0OzKyV/view?usp=sharing)**
 
  Screenshots
 ---
@@ -27,7 +29,7 @@ Planned Features
 * Save encrypted data & Key
 * Informative question's
 * Privacy to access encrypted data
-* Material UI
+* UI(User Interface)
 
 
 Known Issues
