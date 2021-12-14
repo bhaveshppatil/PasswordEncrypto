@@ -3,7 +3,7 @@
 
 #### Kotlin.
 
-👉 **PasswordEncrypto [Live Demo](https://drive.google.com/file/d/1qAlpMrBvLy5wscenA6TwTRiVgF0OzKyV/view?usp=sharing)**
+👉 **PasswordEncrypto [Live Demo](https://drive.google.com/file/d/1tVwN6PyzGTskYkM4gg4AGQhpbgQ5qbkI/view?usp=sharing)**
 
  Screenshots
 ---
@@ -17,11 +17,10 @@
 Current Features
 ---
 * Generate strong and random passwords
-* Encrypt data using Rail fence and cipher text technique (500+ word)
+* Encrypt data using Rail fence and cipher text technique.
 * Decryption technique
 * Save password.
 * Copy Password.
-
 
 Planned Features
 ---
