@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Views.DecryptionActivity">
+    tools:context=".views.DecryptionActivity">
 
     <RadioGroup
         android:id="@+id/radio_group"
@@ -20,7 +20,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:fontFamily="@font/concert_one"
+            android:padding="@dimen/dp_10"
+            android:fontFamily="@font/poppins_medium"
             android:paddingStart="@dimen/dp_10"
             android:text="CipherText"
             android:textSize="18sp" />
@@ -30,7 +31,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:fontFamily="@font/concert_one"
+            android:padding="@dimen/dp_10"
+            android:fontFamily="@font/poppins_medium"
             android:paddingStart="@dimen/dp_10"
             android:text="Rail Fence"
             android:textSize="18sp" />

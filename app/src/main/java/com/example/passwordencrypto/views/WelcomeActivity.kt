@@ -1,13 +1,12 @@
-package com.example.passwordencrypto.Views
+package com.example.passwordencrypto.views
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation
-import com.example.passwordencrypto.Fragments.DecryptionFragment
-import com.example.passwordencrypto.Fragments.EncryptionFragment
-import com.example.passwordencrypto.Fragments.PasswordFragment
+import com.example.passwordencrypto.fragments.DecryptionFragment
+import com.example.passwordencrypto.fragments.EncryptionFragment
+import com.example.passwordencrypto.fragments.PasswordFragment
 import com.example.passwordencrypto.R
 
 class WelcomeActivity : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.example.passwordencrypto.Views
+package com.example.passwordencrypto.views
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.passwordencrypto.R
 import kotlinx.android.synthetic.main.activity_decryption.*
+import java.lang.StringBuilder
 
 
 class DecryptionActivity : AppCompatActivity() {
@@ -47,6 +48,7 @@ class DecryptionActivity : AppCompatActivity() {
             if (cipher.isChecked) {
                 val encryptedData = etDecryptData.text.toString()
                 val key = etDecryptKey.text.toString().toInt()
+
                 val decryptedData = decryptData(encryptedData, key)
                 val intent = Intent(this, EncryptedActivity::class.java)
                 intent.putExtra("decrypted", decryptedData)
@@ -54,6 +56,7 @@ class DecryptionActivity : AppCompatActivity() {
             } else if (railFence.isChecked) {
                 val encryptedData = etDecryptData.text.toString()
                 val decryptedData = decryptRailFenceData(encryptedData)
+
                 val intent = Intent(this, EncryptedActivity::class.java)
                 intent.putExtra("RailFenceDecrypted", decryptedData)
                 startActivity(intent)
@@ -83,21 +86,23 @@ class DecryptionActivity : AppCompatActivity() {
     }
 
     private fun decryptData(str: String, key: Int): String {
-        var encryptedStr: String = ""
+//        var encryptedStr: String = ""
+        var encryptedStr : StringBuilder = StringBuilder()
         for (i in str.indices) {
-
             if (str[i] in 'a'..'z') {
-                encryptedStr += ((str[i].hashCode() - key - 97) % 26 + 97).toChar()
+//                encryptedStr += ((str[i].hashCode() - key - 97) % 26 + 97).toChar()
+                encryptedStr.append((str[i].hashCode() - key -97)  + 97)
             } else if (str[i] in 'A'..'Z') {
-                val upper = ((str[i].hashCode() - key - 65) % 26 + 65).toChar()
-                encryptedStr += upper
+//                val upper = ((str[i].hashCode() - key - 65) % 26 + 65)
+                val uppercase = ((str[i].hashCode() - key -65) + 65)
+                encryptedStr.append(uppercase)
             } else if (str[i] in '0'..'9') {
-                val number = ((str[i].hashCode() - key - 48) % 10 + 48).toChar()
-                encryptedStr += number
+//                val number = ((str[i].hashCode() - key - 48) % 10 + 48).toChar()
+                encryptedStr.append((str[i].hashCode() - key -48) + 48)
             } else {
-                encryptedStr += str[i]
+                encryptedStr.append(str[i])
             }
         }
-        return encryptedStr
+        return encryptedStr.toString()
     }
 }

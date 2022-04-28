@@ -1,4 +1,4 @@
-package com.example.passwordencrypto.Views
+package com.example.passwordencrypto.views
 
 import android.content.Intent
 import android.os.Bundle

@@ -1,4 +1,4 @@
-package com.example.passwordencrypto.Fragments
+package com.example.passwordencrypto.fragments
 
 import android.content.ClipboardManager
 import android.content.Context
@@ -8,8 +8,6 @@ import android.widget.*
 import android.widget.SeekBar.OnSeekBarChangeListener
 import androidx.fragment.app.Fragment
 import com.example.passwordencrypto.R
-import com.github.clans.fab.FloatingActionButton
-import com.github.clans.fab.FloatingActionMenu
 import kotlinx.android.synthetic.main.fragment_password.*
 import java.util.*
 

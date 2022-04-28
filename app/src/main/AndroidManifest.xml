@@ -11,22 +11,29 @@
         android:textIsSelectable="true"
         android:theme="@style/Theme.PasswordEncrypto">
         <activity
-            android:name=".Views.DecryptionActivity"
+            android:name=".views.DetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.SavedDataActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.DecryptionActivity"
             android:exported="true" />
         <activity
-            android:name=".Views.RailFenceEncryption"
+            android:name=".views.RailFenceEncryption"
             android:exported="true" />
         <activity
-            android:name=".Views.CipherTextEncryption"
+            android:name=".views.CipherTextEncryption"
             android:exported="true" />
         <activity
-            android:name=".Views.EncryptedActivity"
+            android:name=".views.EncryptedActivity"
             android:exported="true" />
         <activity
-            android:name=".Views.WelcomeActivity"
-            android:exported="true" />
+            android:name=".views.WelcomeActivity"
+            android:exported="true"
+            android:launchMode="singleTask" />
         <activity
-            android:name=".Views.MainActivity"
+            android:name=".views.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

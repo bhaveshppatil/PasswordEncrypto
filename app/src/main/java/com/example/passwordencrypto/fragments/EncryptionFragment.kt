@@ -1,12 +1,12 @@
-package com.example.passwordencrypto.Fragments
+package com.example.passwordencrypto.fragments
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.passwordencrypto.R
-import com.example.passwordencrypto.Views.CipherTextEncryption
-import com.example.passwordencrypto.Views.RailFenceEncryption
+import com.example.passwordencrypto.views.CipherTextEncryption
+import com.example.passwordencrypto.views.RailFenceEncryption
 import kotlinx.android.synthetic.main.encryption_password.*
 
 class EncryptionFragment : Fragment(R.layout.encryption_password) {

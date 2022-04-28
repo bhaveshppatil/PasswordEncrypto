@@ -9,4 +9,6 @@
     <string name="content_description_delete">copy generated password</string>
     <string name="more">more</string>
     <string name="content_description_more">More</string>
+    <string name="random_str">This can be achieved during Runtime , all you need to do is check the length of string and add Underlined View More at the end of string like this.</string>
+    <string name="key">Key</string>
 </resources>
