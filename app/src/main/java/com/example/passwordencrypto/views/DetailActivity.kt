@@ -17,6 +17,7 @@ class DetailActivity : AppCompatActivity() {
         val cipherModel = extras?.getSerializable("detail") as CipherEncryptoModel
 
         tvEncText.text = cipherModel.data
+
         tvEncKey.text = "Key ${cipherModel.key}"
     }
 }
