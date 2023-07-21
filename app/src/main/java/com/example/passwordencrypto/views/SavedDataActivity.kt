@@ -5,10 +5,12 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.passwordencrypto.R
+import com.example.passwordencrypto.databinding.ActivitySavedDataBinding
 import com.example.passwordencrypto.db.CipherEncryptoModel
 import com.example.passwordencrypto.db.DAOEncrypto
 import com.example.passwordencrypto.db.EncryptoDatabase
@@ -17,7 +19,6 @@ import com.example.passwordencrypto.viewModel.EncryptoViewModel
 import com.example.passwordencrypto.viewModel.EncryptoViewModelFactory
 import com.example.passwordencrypto.views.adapter.CipherAdapter
 import com.example.passwordencrypto.views.adapter.ItemClickListener
-import kotlinx.android.synthetic.main.activity_saved_data.*
 
 class SavedDataActivity : AppCompatActivity(), ItemClickListener {
     private val dataList = mutableListOf<CipherEncryptoModel>()
@@ -25,10 +26,10 @@ class SavedDataActivity : AppCompatActivity(), ItemClickListener {
     private lateinit var encryptoDatabase: EncryptoDatabase
     private lateinit var daoEncrypto: DAOEncrypto
     private lateinit var encryptoViewModel: EncryptoViewModel
-
+    private lateinit var binding: ActivitySavedDataBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_saved_data)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_saved_data)
         init()
         setUpRecyclerView()
         encryptoViewModel.getDataFromDB().observe(this, Observer {
@@ -41,18 +42,18 @@ class SavedDataActivity : AppCompatActivity(), ItemClickListener {
 
     private fun setUpRecyclerView() {
         cipherAdapter = CipherAdapter(this, dataList, this)
-        rcSavedDataList.adapter = cipherAdapter
-        rcSavedDataList.layoutManager = LinearLayoutManager(this)
+        binding.rcSavedDataList.adapter = cipherAdapter
+        binding.rcSavedDataList.layoutManager = LinearLayoutManager(this)
     }
 
-    private fun updateUI(cipherDataList : List<CipherEncryptoModel>) {
+    private fun updateUI(cipherDataList: List<CipherEncryptoModel>) {
 
         if (cipherDataList.isEmpty()) {
-            rcSavedDataList.visibility = View.GONE
-            tvNoDataFound.visibility = View.VISIBLE
+            binding.rcSavedDataList.visibility = View.GONE
+            binding.tvNoDataFound.visibility = View.VISIBLE
         } else {
-            tvNoDataFound.visibility = View.GONE
-            rcSavedDataList.visibility = View.VISIBLE
+            binding.tvNoDataFound.visibility = View.GONE
+            binding.rcSavedDataList.visibility = View.VISIBLE
         }
     }
 
@@ -71,7 +72,7 @@ class SavedDataActivity : AppCompatActivity(), ItemClickListener {
         showToast("Item clicked")
     }
 
-    private fun showToast(message : String){
+    private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 
     }

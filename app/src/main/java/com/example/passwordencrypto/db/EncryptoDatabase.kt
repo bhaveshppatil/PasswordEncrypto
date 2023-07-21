@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [CipherEncryptoModel::class], version = 1)
+@Database(entities = [CipherEncryptoModel::class], version = 2, exportSchema = false)
 abstract class EncryptoDatabase  : RoomDatabase() {
     abstract fun getEncryptedData() : DAOEncrypto
 

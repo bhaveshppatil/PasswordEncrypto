@@ -3,22 +3,28 @@ package com.example.passwordencrypto.fragments
 import android.content.ClipboardManager
 import android.content.Context
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.*
 import android.widget.SeekBar.OnSeekBarChangeListener
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.passwordencrypto.R
-import kotlinx.android.synthetic.main.fragment_password.*
+import com.example.passwordencrypto.databinding.FragmentPasswordBinding
 import java.util.*
 
 
 class PasswordFragment : Fragment(R.layout.fragment_password) {
-
-    private lateinit var checkboxSymbols: CheckBox
-    private lateinit var checkboxUppercase: CheckBox
-    private lateinit var checkboxLowercase: CheckBox
-    private lateinit var checkboxNumbers: CheckBox
-    private lateinit var checkboxSavePasswd: CheckBox
+    private lateinit var binding: FragmentPasswordBinding
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_password, container, false)
+        return binding.root
+    }
 
     private var progress: Int = 1
 
@@ -27,11 +33,6 @@ class PasswordFragment : Fragment(R.layout.fragment_password) {
 
         val seekBar = view.findViewById(R.id.seekbar) as SeekBar
 
-        checkboxSymbols = view.findViewById(R.id.checkboxSymbols)
-        checkboxUppercase = view.findViewById(R.id.checkboxUppercase)
-        checkboxLowercase = view.findViewById(R.id.checkboxLowercase)
-        checkboxNumbers = view.findViewById(R.id.checkboxNumbers)
-        checkboxSavePasswd = view.findViewById(R.id.checkboxSavePasswd)
         val menuBar: TextView = view.findViewById(R.id.tvMenu)
 
         menuBar.setOnClickListener {
@@ -43,7 +44,7 @@ class PasswordFragment : Fragment(R.layout.fragment_password) {
                     R.id.copy -> {
                         val manager: ClipboardManager =
                             requireContext().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-                        manager.setText(tvGeneratedPasswd.text)
+                        manager.setText(binding.tvGeneratedPasswd.text)
                         Toast.makeText(context, "Copied", Toast.LENGTH_SHORT).show()
                     }
                     R.id.save -> {
@@ -63,7 +64,7 @@ class PasswordFragment : Fragment(R.layout.fragment_password) {
 
             override fun onProgressChanged(seekBar: SeekBar, progresValue: Int, fromUser: Boolean) {
                 progress = progresValue
-                tvSeekMax.text = progress.toString()
+                binding.tvSeekMax.text = progress.toString()
 
             }
 
@@ -74,15 +75,15 @@ class PasswordFragment : Fragment(R.layout.fragment_password) {
             }
         })
 
-        tvGeneratedPasswd.setOnClickListener {
+        binding.tvGeneratedPasswd.setOnClickListener {
             val manager: ClipboardManager =
                 requireContext().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-            manager.setText(tvGeneratedPasswd.text)
+            manager.setText(binding.tvGeneratedPasswd.text)
             Toast.makeText(context, "Copied", Toast.LENGTH_SHORT).show()
         }
 
-        btnGenerate.setOnClickListener {
-            tvGeneratedPasswd.text = generateRandomPassword()
+        binding.btnGenerate.setOnClickListener {
+            binding.tvGeneratedPasswd.text = generateRandomPassword()
         }
     }
 
@@ -95,24 +96,24 @@ class PasswordFragment : Fragment(R.layout.fragment_password) {
         val rn = Random()
         val sb = StringBuilder(progress)
 
-        if (checkboxUppercase.isChecked) {
+        if (binding.checkboxUppercase.isChecked) {
             allowedChars += upperCaseChars
             sb.append(upperCaseChars[rn.nextInt(upperCaseChars.length - 1)])
         }
-        if (checkboxLowercase.isChecked) {
+        if (binding.checkboxLowercase.isChecked) {
             allowedChars += lowerCaseChars
             sb.append(lowerCaseChars[rn.nextInt(lowerCaseChars.length - 1)])
         }
-        if (checkboxNumbers.isChecked) {
+        if (binding.checkboxNumbers.isChecked) {
             allowedChars += numberChars
             sb.append(numberChars[rn.nextInt(numberChars.length - 1)])
         }
-        if (checkboxSymbols.isChecked) {
+        if (binding.checkboxSymbols.isChecked) {
             allowedChars += specialChars
             sb.append(specialChars[rn.nextInt(specialChars.length - 1)])
         }
 
-        if (checkboxSavePasswd.isChecked) {
+        if (binding.checkboxSavePasswd.isChecked) {
             Toast.makeText(context, "Password saved successfully", Toast.LENGTH_SHORT).show()
         }
 

@@ -3,16 +3,18 @@ package com.example.passwordencrypto.views
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import com.example.passwordencrypto.R
-import kotlinx.android.synthetic.main.activity_rail_fence.*
+import com.example.passwordencrypto.databinding.ActivityRailFenceBinding
 
 class RailFenceEncryption : AppCompatActivity() {
+    private lateinit var binding: ActivityRailFenceBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_rail_fence)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_rail_fence)
 
-        btnRailFenceData.setOnClickListener {
-            val str: String = etRailFenceData.text.toString()
+        binding.btnRailFenceData.setOnClickListener {
+            val str: String = binding.etRailFenceData.text.toString()
             val data = encryptData(str)
 
             val intent = Intent(this, EncryptedActivity::class.java)

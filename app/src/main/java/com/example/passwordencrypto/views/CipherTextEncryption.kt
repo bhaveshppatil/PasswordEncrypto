@@ -3,18 +3,19 @@ package com.example.passwordencrypto.views
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import com.example.passwordencrypto.R
-import kotlinx.android.synthetic.main.activity_cipher_text_encryption.*
+import com.example.passwordencrypto.databinding.ActivityCipherTextEncryptionBinding
 
 class CipherTextEncryption : AppCompatActivity() {
-
+    private lateinit var binding: ActivityCipherTextEncryptionBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_cipher_text_encryption)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_cipher_text_encryption)
 
-        btnEncryptData.setOnClickListener {
-            val str: String = etEncryptData.text.toString()
-            val key: Int = etEncryptKey.text.toString().toInt()
+        binding.btnEncryptData.setOnClickListener {
+            val str: String = binding.etEncryptData.text.toString()
+            val key: Int = binding.etEncryptKey.text.toString().toInt()
             val data = encryptData(str, key)
             val intent = Intent(this, EncryptedActivity::class.java)
             intent.putExtra("encrypted", data)
@@ -22,7 +23,7 @@ class CipherTextEncryption : AppCompatActivity() {
             startActivity(intent)
         }
 
-        tvShowList.setOnClickListener {
+        binding.tvShowList.setOnClickListener {
             val intent = Intent(this, SavedDataActivity::class.java)
             startActivity(intent)
         }

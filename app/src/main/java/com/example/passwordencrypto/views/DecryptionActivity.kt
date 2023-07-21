@@ -6,60 +6,46 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import com.example.passwordencrypto.R
-import kotlinx.android.synthetic.main.activity_decryption.*
+import com.example.passwordencrypto.databinding.ActivityDecryptionBinding
+import org.jetbrains.anko.toast
 import java.lang.StringBuilder
 
 
 class DecryptionActivity : AppCompatActivity() {
-
+    private lateinit var binding: ActivityDecryptionBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_decryption)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_decryption)
+        binding.apply {
 
-        val radioGroup = findViewById<RadioGroup>(R.id.radio_group)
-        val cipher = findViewById<RadioButton>(R.id.checkboxCipher)
-        val railFence = findViewById<RadioButton>(R.id.checkboxRailFence)
+            radioGroup.setOnCheckedChangeListener { group, checkedId ->
+                val radioButton: Int = radioGroup.checkedRadioButtonId
 
-        radioGroup.setOnCheckedChangeListener { group, checkedId ->
-            val radioButton: Int = radioGroup.checkedRadioButtonId
-
-            if (cipher.id == radioButton) {
-                Toast.makeText(
-                    this,
-                    "Cipher encryption selected",
-                    Toast.LENGTH_SHORT
-                ).show()
+                if (checkboxCipher.id == radioButton) {
+                   toast("Cipher encryption selected")
+                }
+                if (checkboxRailFence.id == radioButton) {
+                    val data = "No need to select key"
+                    etDecryptKey.setText(data)
+                    etDecryptKey.isClickable = false
+                    toast("Rail Fence encryption selected")
+                }
             }
-            if (railFence.id == radioButton) {
-                val data = "No need to select key"
-                etDecryptKey.setText(data)
-                etDecryptKey.isClickable = false
-                Toast.makeText(
-                    this,
-                    "Rail Fence encryption selected",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        }
 
-        btnDecryptData.setOnClickListener {
-            if (cipher.isChecked) {
-                val encryptedData = etDecryptData.text.toString()
-                val key = etDecryptKey.text.toString().toInt()
-
-                val decryptedData = decryptData(encryptedData, key)
-                val intent = Intent(this, EncryptedActivity::class.java)
-                intent.putExtra("decrypted", decryptedData)
-                startActivity(intent)
-            } else if (railFence.isChecked) {
-                val encryptedData = etDecryptData.text.toString()
-                val decryptedData = decryptRailFenceData(encryptedData)
-
-                val intent = Intent(this, EncryptedActivity::class.java)
-                intent.putExtra("RailFenceDecrypted", decryptedData)
-                startActivity(intent)
+            btnDecryptData.setOnClickListener {
+                if (checkboxCipher.isChecked) {
+                    val encryptedData = etDecryptData.text.toString()
+                    val key = etDecryptKey.text.toString().toInt()
+                    val decryptedData: String = decryptData(encryptedData, key)
+                   performIntentAction("decrypted", decryptedData)
+                } else if (checkboxRailFence.isChecked) {
+                    val encryptedData = etDecryptData.text.toString()
+                    val decryptedData = decryptRailFenceData(encryptedData)
+                    performIntentAction("RailFenceDecrypted", decryptedData)
+                }
             }
         }
     }
@@ -104,5 +90,11 @@ class DecryptionActivity : AppCompatActivity() {
             }
         }
         return encryptedStr.toString()
+    }
+
+    private fun performIntentAction(key: String, data: String){
+        val intent = Intent(this, EncryptedActivity::class.java)
+        intent.putExtra(key, data)
+        startActivity(intent)
     }
 }

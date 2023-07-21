@@ -9,10 +9,10 @@ interface DAOEncrypto {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addDataToDb(cipherEncryptoModel: CipherEncryptoModel)
 
-    @Query("delete from `encrypted table` ")
+    @Query("delete from `encrypted` ")
     fun deleteAllData()
 
-    @Query("select * from `encrypted table` order by id desc ")
+    @Query("select * from `encrypted` order by id desc ")
     fun getRoutineData(): LiveData<List<CipherEncryptoModel>>
 
     @Delete
